@@ -6,8 +6,9 @@
     <br>
     <form action="{{route('createvideogame')}}" method="POST">
         @csrf
-        <input type="text" placeholder="Nombre del videojuego" name="name_game">
-            <select name="categoria_id" id="">
+        <input type="text" placeholder="Nombre del videojuego" name="name">
+        
+            <select name="category_id" id="">
                 @forelse($categories as $category)
                     <option value="{{$category->id}}">{{$category->name}}</option>                
                 @empty
@@ -16,4 +17,7 @@
             </select>
             <input type="submit" value="Enviar">        
     </form>
+    @error('name')
+            <p style="color:red;">{{$message}}</p>
+    @enderror
 @endsection
